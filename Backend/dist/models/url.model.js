@@ -6,10 +6,10 @@ const urlSchema = new mongoose.Schema({
     clicks: { type: Number, default: 0 },
     createdAt: { type: Date, default: Date.now },
     clickDetails: [{
-            timestamp: Date,
-            referrer: String,
-            ip: String,
-            userAgent: String
+            timestamp: { type: Date, required: true, default: Date.now },
+            referrer: { type: String, default: '' },
+            ip: { type: String, default: '' },
+            userAgent: { type: String, default: '' }
         }]
 });
 export default mongoose.model('Url', urlSchema);

@@ -1,10 +1,8 @@
 import express from 'express';
-import { createShortUrl, redirectToOriginal, getShortUrlStats } from '../controllers/url.controller.js';
+import { createShortUrl, redirectToOriginal, getShortUrlStats, getAllUrls } from '../controllers/url.controller.js';
 const router = express.Router();
-// Create short URL
-router.post('/', createShortUrl);
-// Get stats for a shortcode (more specific route first)
-router.get('/:shortcode/stats', getShortUrlStats);
-// Redirect to original URL (catch-all route last)
+router.post('/shorten', createShortUrl);
+router.get('/stats/:shortcode', getShortUrlStats);
+router.get('/urls', getAllUrls);
 router.get('/:shortcode', redirectToOriginal);
 export default router;
